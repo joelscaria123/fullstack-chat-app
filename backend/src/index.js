@@ -6,7 +6,8 @@ import fs from 'fs';
 import path from "path";
 import cors from 'cors';
 import job from './lib/cron.js';
-import clerkWebhook from "./webhooks/clerk.webhook.js"
+import clerkWebhook from "./webhooks/clerk.webhook.js";
+import authRoutes from "./routes/auth.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,7 +26,10 @@ app.use(clerkMiddleware());
 app.get("/health", (req,res) => {
 
     res.status(200).json({message: "Hello Joel"})
-})
+});
+
+app.use("/api/auth", authRoutes);
+
 
 if(fs.existsSync(publicDir)){
 
