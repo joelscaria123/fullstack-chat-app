@@ -38,7 +38,7 @@ router.post("/", async(req,res) => {
            
         await User.findOneAndUpdate(
           {clerkId: user.id}, 
-          {clerkId: user.id, email, fullName, profilePic: u.image_url},
+          {clerkId: user.id, email, fullName, profilePic: user.image_url},
           {new: true, upsert:true, setDefaultsOnInsert: true},
         );
 
