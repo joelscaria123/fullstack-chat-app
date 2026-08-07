@@ -28,12 +28,18 @@ router.post("/", async(req,res) => {
 
          const user = evt.data;
 
+         console.log(user);
+
          const email = 
            user.email_addresses?.find((e) => e.id === user.primary_email_address_id)?.email_address ??
            user.email_addresses?.[0]?.email_address;
 
+        console.log(email);
+
         const fullName = 
             [user.first_name, user.last_name].filter(Boolean).join("") || user.username || email?.split("@")[0];
+
+        console.log(fullName);
 
            
         await User.findOneAndUpdate(
