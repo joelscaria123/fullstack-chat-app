@@ -4,6 +4,7 @@ import connectDB from './lib/db.js';
 import { clerkMiddleware } from "@clerk/express";
 import fs from 'fs';
 import path from "path";
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
