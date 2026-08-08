@@ -4,13 +4,14 @@ import { WallpaperProvider } from './context/WallpaperContext';
 import ChatPage from './pages/ChatPage';
 import AuthPage from './pages/AuthPage';
 import { useAuth } from '@clerk/react';
+import PageLoader from './components/PageLoader';
 
 
 function App() {
 
   const { isSignedIn, isLoaded } = useAuth();
 
-  if(!isLoaded) return <p>loading....</p>
+  if(!isLoaded) return <PageLoader/>
   
   return (
       <ThemeProvider>
