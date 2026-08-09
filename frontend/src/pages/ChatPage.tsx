@@ -1,8 +1,9 @@
+import toast, { Toaster } from "react-hot-toast"
 
 
 function ChatPage() {
   return (
-    <div>ChatPage</div>
+    <button >Click me </button>
   )
 }
 
