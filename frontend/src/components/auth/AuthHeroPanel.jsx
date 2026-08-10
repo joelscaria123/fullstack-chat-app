@@ -1,5 +1,3 @@
-
-
 import { APP_NAME } from "../AppLogo";
 import { AuthHeroPattern } from "./AuthHeroPattern";
 

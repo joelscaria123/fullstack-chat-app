@@ -1,4 +1,3 @@
-
 const gridStyle = (color) => ({
   backgroundImage: [
     `linear-gradient(${color} 1px, transparent 1px)`,

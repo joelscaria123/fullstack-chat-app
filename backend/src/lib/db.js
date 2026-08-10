@@ -1,25 +1,19 @@
 import mongoose from "mongoose";
 
-async function connectDB (){
+export async function connectDB() {
+  try {
+    const mongoUri = process.env.MONGO_URI;
 
-     try{
+    if (!mongoUri) {
+      throw new Error("MONGO_URI is required");
+    }
 
-         const DATABASE_URL = process.env.DATABASE_URL;
+    const conn = await mongoose.connect(mongoUri);
 
-         if(!DATABASE_URL){
-            
-            throw new Error("Database Url is Missing");
-         }
-
-        const conn = await mongoose.connect(DATABASE_URL);
-        console.log("DATABASE connected Successfully", conn.connection.host);
-     }
-
-     catch(error){
-
-         console.error("MongoDB connection error:", error.message);
-         process.exit(1);
-     }
+    console.log("MongoDB connected", conn.connection.host);
+  } catch (error) {
+    console.error("MongoDB connection error:", error.message);
+    process.exit(1);
+    // 1 means failed, 0 means success
+  }
 }
-
-export default connectDB;
